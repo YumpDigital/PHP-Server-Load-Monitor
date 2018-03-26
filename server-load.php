@@ -58,13 +58,13 @@ if((isset($_GET['savetodb']) && $_GET['savetodb']) || @$argv[1] == 'savetodb') {
 	print_r($loads);
 
 	// TODO: Convert this to proper prepared statement
-	$dbConnection->exec("INSERT INTO `".TABLE."` (`timestamp`, `load1`, `load5`, `load15`) 
+	$dbConnection->exec("INSERT INTO `$TABLE` (`timestamp`, `load1`, `load5`, `load15`) 
 		VALUES ( CURRENT_TIMESTAMP, '".$loads[0]."', '".$loads[1]."', '".$loads[2]."');");
 
 // Otherwise display the graph of data
 } else {
 
-	$data = $dbConnection->query("SELECT * FROM `".TABLE."`;"); 
+	$data = $dbConnection->query("SELECT * FROM `$TABLE`;"); 
 	$chartData = '';
 	foreach ($data as $row) {
 
