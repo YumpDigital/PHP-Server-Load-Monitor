@@ -1,8 +1,8 @@
-# PHP-Server-Load-Monitor
+# PHP Server Load Monitor
 
-Simple self-contained PHP script to record server load and display results in a chart.
+Simple, self-contained PHP script to record server load and display results in a chart.
 
-![screenshot.png?raw=true](Screenshot)
+![Screenshot](screenshot.png?raw=true)
 
 This script is used for tracking the server load figures. Only works on Linux servers.
 
@@ -10,7 +10,7 @@ It is run in 2 ways:
 
   1. As a cron task that records the server load figures every X mins
 
-  2. When run in browser is displays the results in a chart
+  2. When run in browser, it displays the results in a chart
   
 
 # Installation
@@ -32,7 +32,11 @@ It is run in 2 ways:
 			 PRIMARY KEY (`id`)
 	     ) ENGINE=InnoDB
   
-  5. Upload file to remote web space
+  5. Determine how many CPU cores your server has and update the line that says:
+
+         $NUMBER_OF_CORES = 16;
+    
+  5. Upload `server-load.php` to remote web space
 
   6. Run the following URL (twice) in browser to begin to store some data (you can check to ensure it's being saved in DB correctly)
   
@@ -48,4 +52,4 @@ It is run in 2 ways:
 
 # Licence
 
-Open source. Free BSD licence.
+Open source. Free MIT licence.
