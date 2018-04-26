@@ -34,7 +34,7 @@
  *   		
  *   8. Setup cron job running every 5 mins that runs this:
  *   
- *   		curl --silent --show-errors http://_________/server-load/server-load.php
+ *   		curl --silent --show-error http://_________/server-load/server-load.php?savetodb=1
  *   
  */
 
@@ -71,6 +71,7 @@ if((isset($_GET['savetodb']) && $_GET['savetodb']) || @$argv[1] == 'savetodb') {
 		list($date, $time) = explode(' ', $row['timestamp']);
 		list($y, $m, $d) = explode('-', $date);
 		list($h, $i, $s) = explode(':', $time);
+		$m -= 1; // Months seem to be zero based for some reason?
 		$load1 = $row['load1'];
 		$load5 = $row['load5'];
 		$load15 = $row['load15'];
@@ -105,6 +106,7 @@ if((isset($_GET['savetodb']) && $_GET['savetodb']) || @$argv[1] == 'savetodb') {
 				'title': '15 minutes load xiilo.com',
 			    'displayAnnotations': true,
 			    'colors': ['black','#999999','#CCCCCC','red'],
+				'max': <?= $NUMBER_OF_CORES * 2.2 ?>
 			    // 'width': 400,
 			    // 'height': 300,
 			    // 'fill': 20,
